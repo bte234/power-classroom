@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace power_classrooms.Data.Migrations
+namespace power_classroom.Data.Migrations
 {
     public partial class CreateIdentitySchema : Migration
     {
