@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -24,6 +24,18 @@ namespace power_classroom.Controllers
         }
 
         public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        
+        public IActionResult AboutUs()
+        {
+            return View();
+        }
+
+
+        public IActionResult Subscribe()
         {
             return View();
         }
