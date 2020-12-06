@@ -1,4 +1,4 @@
-namespace power_classrooms.Models
+namespace power_classroom.Models
 {
     public class CaseViewModel
     {
