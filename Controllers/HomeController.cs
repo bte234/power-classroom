@@ -35,9 +35,11 @@ namespace power_classroom.Controllers
         }
 
 
-         public IActionResult Subscribe()
+        public IActionResult Subscribe()
         {
             return View();
+        }
+
         public IActionResult CaseUpdate()
         {
             var caseViewModel = new CaseViewModel()

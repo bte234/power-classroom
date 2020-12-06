@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace power_classrooms.Models {
+namespace power_classroom.Models {
 
   public class Subscriber
   {
