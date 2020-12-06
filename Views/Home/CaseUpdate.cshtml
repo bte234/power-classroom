@@ -1,0 +1,20 @@
+@model CaseViewModel
+
+@{
+    ViewData["Title"] = "COVID-19 Case Update in Canada";
+}
+
+<h1 class="display-4">@ViewData["Title"]</h1>
+<span>As of @Model.Date</span>
+<br><br><br>
+
+<div class="text-center">
+    <h2>Total Cases</h2>
+    <h4>@Model.Confirmed</h4>
+    <br>
+    <h2>Deaths</h2>
+    <h4>@Model.Deceased</h4>
+    <br>
+    <h2>Recovers</h2>
+    <h4>@Model.Recovered</h4>
+</div>
