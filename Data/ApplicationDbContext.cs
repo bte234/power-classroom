@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using power_classroom.Models;
 
 namespace power_classroom.Data
 {
@@ -12,5 +13,7 @@ namespace power_classroom.Data
             : base(options)
         {
         }
+
+        public DbSet<NewsResource> NewsResourceList { get; set; }
     }
 }
