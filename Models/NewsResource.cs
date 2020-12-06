@@ -8,7 +8,7 @@ namespace power_classroom.Models
         public Guid Id { get; set; }
 
         [Required]
-        public string ArticleType { get; set; }
+        public string ArticleType { get; set;} = "Resource";
 
         [Required]
         public string Title { get; set; }
