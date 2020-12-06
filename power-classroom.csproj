@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <UserSecretsId>aspnet-power_classrooms-E6283063-586A-4A4F-8F54-BDACAA1C9F66</UserSecretsId>
-    <RootNamespace>power_classrooms</RootNamespace>
+    <UserSecretsId>aspnet-power_classroom-0167B37E-00AE-4454-B024-4828B1C513E7</UserSecretsId>
+    <RootNamespace>power_classroom</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
