@@ -1,6 +1,6 @@
 using System;
 
-namespace power_classrooms.Models
+namespace power_classroom.Models
 {
     public class ErrorViewModel
     {

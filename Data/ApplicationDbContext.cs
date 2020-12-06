@@ -4,7 +4,7 @@ using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace power_classrooms.Data
+namespace power_classroom.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
