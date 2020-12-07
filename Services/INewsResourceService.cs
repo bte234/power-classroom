@@ -12,5 +12,6 @@ namespace power_classroom.Services
         Task<NewsResource[]> GetResourceAsync();
         Task<bool> AddItemAsync(NewsResource newItem);
         Task<bool> UpdateItemAsync(Guid id, NewsResource currentItem);
+        Task<bool> DeleteItemAsync(Guid id);
     }
 }
