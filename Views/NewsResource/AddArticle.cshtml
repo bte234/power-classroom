@@ -1,30 +1,49 @@
 @model NewsResource
 @{
-    ViewData["Title"] = "Add Article";
+    ViewData["Title"] = "Create New Article";
 }
 
-<div class="d-flex justify-content-center">
+<div class="container row p-0 m-0">
+    <div class="col-9">
+        <h2 class="text-info">@ViewData["Title"]</h2>
+    </div>
+</div>
+
+<div class="border container" style="padding: 30px;">
     <form asp-action="CreateNew" method="POST">
-        <h5 class="text-info">Create New Resource</h5>
-        <label asp-for="Title">Title</label>
-        <br>
-        <input asp-for="Title">
-        <br>
-        <label asp-for="ArticleType">Article Type</label>
-        <br>
-        <select asp-for="ArticleType" asp-items="Html.GetEnumSelectList<ArticleEnum>()">
-            <option selected="selected" value="">Please select</option>
-        </select>
-        <br>
-        <label asp-for="Source">Source</label>
-        <br>
-        <input asp-for="Source">
-        <br>
-        <label asp-for="URL">URL</label>
-        <br>
-        <input asp-for="URL">
+        <div class="form-group">
+            <label asp-for="Title" for="exampleFormControl1">Title</label>
+            <input asp-for="Title" class="form-control" id="exampleFormControlInput1">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="ArticleType" for="exampleFormControlSelect1">Article Type</label>
+            <select class="form-control" id="exampleFormControlSelect1" asp-for="ArticleType" asp-items="Html.GetEnumSelectList<ArticleEnum>()">
+                <option selected="selected" value="">Please select</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Source" for="exampleFormControl1">Source</label>
+            <input asp-for="Source" class="form-control" id="exampleFormControlInput1">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="URL" for="exampleFormControl1">URL</label>
+            <input asp-for="URL" class="form-control" id="exampleFormControlInput1">
+        </div>
+
         <br><br>
-        <button class="btn btn-primary btn-lg btn-block" type="submit">Add</button>
-        @* <a href="javascript: history.go(-1)">Go Back</a>   *@
+        <div class="form-group row">
+            <div class="col-3 offset-3">
+                <button type="submit" class="btn btn-primary form-control">
+                    Add Article
+                </button>
+            </div>
+            <div class="col-3">
+                <a href="javascript: history.go(-1)" class="btn btn-success form-control">Go Back</a>
+            </div>
+        </div>
+
     </form>
 </div>

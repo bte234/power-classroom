@@ -18,17 +18,6 @@ namespace power_classroom.Controllers
         }
         public IActionResult Index()
         {
-            // //get items from db
-            // var resources = await _newsResourceService.GetResourceAsync();
-
-            // // Put items into a model
-            // var model = new NewsResourceViewModel()
-            // {
-            //     NewsResourceList = resources
-            // };
-
-            // // Render view using the model
-            // return View(model);
             return View();
         }
 
@@ -78,9 +67,12 @@ namespace power_classroom.Controllers
         {
             if (!ModelState.IsValid)
             {
-                if (newItem.ArticleType == ArticleEnum.News) {
+                if (newItem.ArticleType == ArticleEnum.News) 
+                {
                     return RedirectToAction("News");
-                } else {
+                } 
+                else 
+                {
                     return RedirectToAction("Resources");
                 }
             }
@@ -88,13 +80,16 @@ namespace power_classroom.Controllers
             var successful = await _newsResourceService.AddItemAsync(newItem);
             if (!successful)
             {
-                return BadRequest("Could not add resource.");
+                return BadRequest("Could not add news or resource. Please try again!");
             }
 
             
-            if (newItem.ArticleType == ArticleEnum.News) {
+            if (newItem.ArticleType == ArticleEnum.News) 
+            {
                 return RedirectToAction("News");
-            } else {
+            } 
+            else 
+            {
                 return RedirectToAction("Resources");
             }
         }
@@ -114,16 +109,17 @@ namespace power_classroom.Controllers
             var success = await _newsResourceService.UpdateItemAsync(id, currentItem);
             if (!success)
             {
-                return BadRequest("Could not update item.");
+                return BadRequest("Could not update item. Please try again!");
             }
 
-            if (currentItem.ArticleType == ArticleEnum.News) {
+            if (currentItem.ArticleType == ArticleEnum.News) 
+            {
                 return RedirectToAction("News");
-            } else {
+            } 
+            else 
+            {
                 return RedirectToAction("Resources");
             }
-
-            // return RedirectToAction("Index"); //TODO: gotta go to News or Resource
         }
     }
 }
