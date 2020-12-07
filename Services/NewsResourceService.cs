@@ -17,6 +17,14 @@ namespace power_classroom.Services
             _context = context;
         }
 
+        public async Task<NewsResource> GetItemByIdAsync(Guid id)
+        {
+            var item = await _context.NewsResourceList
+                .Where(x => x.Id == id)
+                .SingleOrDefaultAsync();
+            return item;
+        }
+
         public async Task<NewsResource[]> GetResourceAsync()
         {
             var resources = await _context.NewsResourceList
@@ -37,6 +45,22 @@ namespace power_classroom.Services
             newItem.Id = Guid.NewGuid();
 
             _context.NewsResourceList.Add(newItem);
+
+            var saveResult = await _context.SaveChangesAsync();
+            return saveResult == 1;
+        }
+
+        public async Task<bool> UpdateItemAsync(Guid id, NewsResource currentItem)
+        {
+            var data = await _context.NewsResourceList
+                .Where(x => x.Id == id)
+                .SingleOrDefaultAsync();
+
+            if (data == null) return false;
+
+            data.Title = currentItem.Title;
+            data.Source = currentItem.Source;
+            data.URL = currentItem.URL;
 
             var saveResult = await _context.SaveChangesAsync();
             return saveResult == 1;

@@ -62,6 +62,17 @@ namespace power_classroom.Controllers
             return View();
         }
 
+        public async Task<IActionResult> Edit(Guid id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var item = await _newsResourceService.GetItemByIdAsync(id);
+            return View("Edit", item);
+        }
+
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateNew(NewsResource newItem)
         {
@@ -76,7 +87,23 @@ namespace power_classroom.Controllers
                 return BadRequest("Could not add resource.");
             }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index"); //TODO: Gotta go to News or Resources
+        }
+
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Update(Guid id, NewsResource currentItem)
+        {
+            if (id == Guid.Empty)
+            {
+                return RedirectToAction("Index");
+            }
+
+            var success = await _newsResourceService.UpdateItemAsync(id, currentItem);
+            if (!success)
+            {
+                return BadRequest("Could not update item.");
+            }
+            return RedirectToAction("Index"); //TODO: gotta go to News or Resource
         }
     }
 }
