@@ -1,0 +1,28 @@
+@model NewsResource
+@{
+    ViewData["Title"] = "Add Article";
+}
+
+<div class="d-flex justify-content-center">
+    <form asp-action="CreateNew" method="POST">
+        <h5 class="text-info">Create New Resource</h5>
+        <label asp-for="Title">Title</label>
+        <br>
+        <input asp-for="Title">
+        <br>
+        <label asp-for="ArticleType">Article Type</label>
+        <br>
+        <input asp-for="ArticleType">
+        <br>
+        <label asp-for="Source">Source</label>
+        <br>
+        <input asp-for="Source">
+        <br>
+        <label asp-for="URL">URL</label>
+        <br>
+        <input asp-for="URL">
+        <br><br>
+        <button class="btn btn-primary btn-lg btn-block" type="submit">Add</button>
+        @* <a href="javascript: history.go(-1)">Go Back</a>   *@
+    </form>
+</div>
