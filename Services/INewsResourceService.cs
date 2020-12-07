@@ -7,6 +7,7 @@ namespace power_classroom.Services
 {
     public interface INewsResourceService
     {
+        Task<NewsResource[]> GetNewsAsync();
         Task<NewsResource[]> GetResourceAsync();
         Task<bool> AddItemAsync(NewsResource newItem);
     }

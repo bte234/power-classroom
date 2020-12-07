@@ -25,6 +25,13 @@ namespace power_classroom.Services
             return resources;
         }
 
+        public async Task<NewsResource[]> GetNewsAsync() {
+            var news = await _context.NewsResourceList
+                .Where(x => x.ArticleType== "News" || x.ArticleType == "news")
+                .ToArrayAsync();
+            return news;
+        }
+
         public async Task<bool> AddItemAsync(NewsResource newItem)
         {
             newItem.Id = Guid.NewGuid();

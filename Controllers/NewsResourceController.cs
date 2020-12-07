@@ -18,6 +18,21 @@ namespace power_classroom.Controllers
         }
         public async Task<IActionResult> Index()
         {
+            // //get items from db
+            // var resources = await _newsResourceService.GetResourceAsync();
+
+            // // Put items into a model
+            // var model = new NewsResourceViewModel()
+            // {
+            //     NewsResourceList = resources
+            // };
+
+            // // Render view using the model
+            // return View(model);
+            return RedirectToAction("Resources");
+        }
+
+        public async Task<IActionResult> Resources() {
             //get items from db
             var resources = await _newsResourceService.GetResourceAsync();
 
@@ -28,7 +43,16 @@ namespace power_classroom.Controllers
             };
 
             // Render view using the model
-            return View(model);
+            return View("Index", model);
+        }
+
+        public async Task<IActionResult> News() {
+            var news = await _newsResourceService.GetNewsAsync();
+            var model = new NewsResourceViewModel() {
+                NewsResourceList = news
+            };
+
+            return View("Index", model);
         }
 
         public IActionResult AddArticle()
@@ -41,7 +65,7 @@ namespace power_classroom.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("AddArticle");
             }
 
             var successful = await _newsResourceService.AddItemAsync(newItem);
@@ -50,7 +74,7 @@ namespace power_classroom.Controllers
                 return BadRequest("Could not add resource.");
             }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("AddArticle");
         }
     }
 }
