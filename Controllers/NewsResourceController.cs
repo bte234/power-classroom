@@ -31,6 +31,11 @@ namespace power_classroom.Controllers
             return View(model);
         }
 
+        public IActionResult AddArticle()
+        {
+            return View();
+        }
+
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateNew(NewsResource newItem)
         {

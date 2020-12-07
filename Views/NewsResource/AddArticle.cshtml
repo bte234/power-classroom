@@ -1,4 +1,7 @@
 @model NewsResource
+@{
+    ViewData["Title"] = "Add Article";
+}
 
 <div class="d-flex justify-content-center">
     <form asp-action="CreateNew" method="POST">
@@ -6,6 +9,10 @@
         <label asp-for="Title">Title</label>
         <br>
         <input asp-for="Title">
+        <br>
+        <label asp-for="ArticleType">Article Type</label>
+        <br>
+        <input asp-for="ArticleType">
         <br>
         <label asp-for="Source">Source</label>
         <br>
