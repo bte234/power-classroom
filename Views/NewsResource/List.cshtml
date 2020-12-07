@@ -1,0 +1,43 @@
+@model NewsResourceViewModel
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="container row p-0 m-0">
+    <div class="col-9">
+        <h2 class="text-info">@ViewData["Title"]</h2>
+    </div>
+    @* <div class="col-3">
+        <a asp-area="" asp-controller="NewsResource" asp-action="Create" class="btn btn-info form-control text-white">Create New Resource</a>
+    </div> *@
+</div>
+
+<br>
+
+<div class="panel panel-default todo-panel">
+  @* <div class="panel-heading">@ViewData["Title"]</div> *@
+
+  <table class="table table-hover">
+      <thead>
+          <tr>
+              <td><strong>Title</strong></td>
+              <td><strong>Source</strong></td>
+              <td><strong>URL</strong></td>
+          </tr>
+      </thead>
+
+      @foreach (var item in Model.NewsResourceList)
+      {
+          <tr>
+              <td>@item.Title</td>
+              <td>@item.Source</td>
+              <td>@item.URL</td>
+          </tr>
+      }
+  </table>
+
+  @* <div class="panel-footer add-item-form">
+    @await Html.PartialAsync("AddResource", new NewsResource())
+  </div> *@
+</div>
