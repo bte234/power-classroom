@@ -78,7 +78,11 @@ namespace power_classroom.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return RedirectToAction("Index");
+                if (newItem.ArticleType == ArticleEnum.News) {
+                    return RedirectToAction("News");
+                } else {
+                    return RedirectToAction("Resources");
+                }
             }
 
             var successful = await _newsResourceService.AddItemAsync(newItem);
@@ -87,7 +91,12 @@ namespace power_classroom.Controllers
                 return BadRequest("Could not add resource.");
             }
 
-            return RedirectToAction("Index"); //TODO: Gotta go to News or Resources
+            
+            if (newItem.ArticleType == ArticleEnum.News) {
+                return RedirectToAction("News");
+            } else {
+                return RedirectToAction("Resources");
+            }
         }
 
         [ValidateAntiForgeryToken]
@@ -95,7 +104,11 @@ namespace power_classroom.Controllers
         {
             if (id == Guid.Empty)
             {
-                return RedirectToAction("Index");
+                if (currentItem.ArticleType == ArticleEnum.News) {
+                    return RedirectToAction("News");
+                } else {
+                    return RedirectToAction("Resources");
+                }
             }
 
             var success = await _newsResourceService.UpdateItemAsync(id, currentItem);
@@ -103,7 +116,14 @@ namespace power_classroom.Controllers
             {
                 return BadRequest("Could not update item.");
             }
-            return RedirectToAction("Index"); //TODO: gotta go to News or Resource
+
+            if (currentItem.ArticleType == ArticleEnum.News) {
+                return RedirectToAction("News");
+            } else {
+                return RedirectToAction("Resources");
+            }
+
+            // return RedirectToAction("Index"); //TODO: gotta go to News or Resource
         }
     }
 }
