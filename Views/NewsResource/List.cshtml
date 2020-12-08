@@ -17,36 +17,12 @@
 
 <div class="panel panel-default article-container">
 
-  @* <table class="table table-hover">
-      <thead>
-          <tr>
-              <td><strong>Title</strong></td>
-              <td><strong>Source</strong></td>
-              <td><strong>URL</strong></td>
-              <td></td>
-          </tr>
-      </thead>
-
-      @foreach (var item in Model.NewsResourceList)
-      {
-          <tr>
-              <td>@item.Title</td>
-              <td>@item.Source</td>
-              <td>@item.URL</td>
-              <td>
-                  <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success btn-sm">Edit</a>
-              </td>
-              <td>
-                  <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm"
-                  onclick="return confirm('Are you sure you want to delete article: @item.Title')">
-                  Delete</a>
-              </td>
-          </tr>
-      }
-  </table> *@
-    
     @foreach (var item in Model.NewsResourceList)
     {
+        <div class="admin-btns">
+            <a asp-action="Edit" asp-route-id="@item.Id" class="fa fa-edit edit"></a>
+            <a asp-action="Delete" asp-route-id="@item.Id" class="fa fa-trash-alt delete"></a>
+        </div>
         <a href="@item.URL" target="_blank">
             <div class="article">
                 <h4>@item.Title</h4>

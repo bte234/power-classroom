@@ -82,11 +82,26 @@ body {
   text-decoration: none;
 }
 
+.admin-btns {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.admin-btns a {
+  margin: .2em;
+  color: red;
+}
+
+.admin-btns a:hover {
+  color: black;
+}
+
 .article {
   border: solid #555555 1px;
   border-radius: 5px;
   padding: 1em;
-  margin: 1em 0;
+  margin-bottom: 1em;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
