@@ -77,3 +77,27 @@ body {
 .home-content h1 {
   text-align: center;
 }
+
+.article-container a:hover {
+  text-decoration: none;
+}
+
+.article {
+  border: solid #555555 1px;
+  border-radius: 5px;
+  padding: 1em;
+  margin: 1em 0;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.article:hover {
+  background-color: #b6e1ff;
+}
+
+.article span {
+  align-self: flex-end;
+  color: #555555;
+}

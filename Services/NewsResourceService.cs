@@ -68,15 +68,15 @@ namespace power_classroom.Services
 
         public async Task<bool> DeleteItemAsync(Guid id)
         {
-              var item = await _context.NewsResourceList.FindAsync(id);
-              if (id == null)
-              {
-                  return false;
-              }
-                _context.NewsResourceList.Remove(item);
+            var item = await _context.NewsResourceList.FindAsync(id);
+            if (id == null)
+            {
+                return false;
+            }
+            _context.NewsResourceList.Remove(item);
 
-                var saveResult = await _context.SaveChangesAsync();
-                return saveResult == 1;
+            var saveResult = await _context.SaveChangesAsync();
+            return saveResult == 1;
         }
     }
 }
