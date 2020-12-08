@@ -64,17 +64,27 @@ namespace power_classroom.Controllers
 
 
         public async Task<IActionResult> Delete(Guid id)
-      {
-        if (id == Guid.Empty)
         {
-            return RedirectToAction("Index");
-        }
-        var success = await _newsResourceService.DeleteItemAsync(id);
-        if (!success)
-        {
-            return BadRequest("Could not delete item.");
-        }
-          return RedirectToAction("Index");
+            if (id == Guid.Empty)
+            {
+                return RedirectToAction("Index");
+            }
+
+            var item = await _newsResourceService.GetItemByIdAsync(id);
+            var itemType = item.ArticleType;
+            var success = await _newsResourceService.DeleteItemAsync(id);
+            if (!success)
+            {
+                return BadRequest("Could not delete item.");
+            }
+            if (itemType == ArticleEnum.News) 
+            {
+                return RedirectToAction("News");
+            } 
+            else 
+            {
+                return RedirectToAction("Resources");
+            }
         }
 
 
