@@ -62,6 +62,25 @@ namespace power_classroom.Controllers
             return View("Edit", item);
         }
 
+
+        public async Task<IActionResult> Delete(Guid id)
+      {
+        if (id == Guid.Empty)
+        {
+            return RedirectToAction("Index");
+        }
+        var success = await _newsResourceService.DeleteItemAsync(id);
+        if (!success)
+        {
+            return BadRequest("Could not delete item.");
+        }
+          return RedirectToAction("Index");
+        }
+
+
+
+
+
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateNew(NewsResource newItem)
         {
@@ -121,5 +140,7 @@ namespace power_classroom.Controllers
                 return RedirectToAction("Resources");
             }
         }
+
+
     }
 }
