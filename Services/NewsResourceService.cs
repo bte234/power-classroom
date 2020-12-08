@@ -28,14 +28,14 @@ namespace power_classroom.Services
         public async Task<NewsResource[]> GetResourceAsync()
         {
             var resources = await _context.NewsResourceList
-                .Where(x => x.ArticleType == "Resource" || x.ArticleType == "resource")
+                .Where(x => x.ArticleType == ArticleEnum.Resource)
                 .ToArrayAsync();
             return resources;
         }
 
         public async Task<NewsResource[]> GetNewsAsync() {
             var news = await _context.NewsResourceList
-                .Where(x => x.ArticleType== "News" || x.ArticleType == "news")
+                .Where(x => x.ArticleType == ArticleEnum.News)
                 .ToArrayAsync();
             return news;
         }

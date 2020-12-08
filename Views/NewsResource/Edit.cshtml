@@ -15,21 +15,25 @@
 <div class="border container" style="padding: 30px;">
     <form asp-action="Update" method="POST">
         <input type="hidden" name="id" value="@Model.Id">
-        <label asp-for="Title">Title</label>
-        <br>
-        <input asp-for="Title" value="@Model.Title">
-        <br>
-        <label asp-for="ArticleType">Article Type</label>
-        <br>
-        <input asp-for="ArticleType" value="@Model.ArticleType">
-        <br>
-        <label asp-for="Source">Source</label>
-        <br>
-        <input asp-for="Source" value="@Model.Source">
-        <br>
-        <label asp-for="URL">URL</label>
-        <br>
-        <input asp-for="URL" value="@Model.URL">
+        <div class="form-group">
+            <label asp-for="Title" for="exampleFormControl1">Title</label>
+            <input asp-for="Title" class="form-control" id="exampleFormControlInput1" value="@Model.Title">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="ArticleType" for="exampleFormControl1">Article Type (News/Resource)</label>
+            <input asp-for="ArticleType" class="form-control" id="exampleFormControlInput1" value="@Model.ArticleType">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Source" for="exampleFormControl1">Source</label>
+            <input asp-for="Source" class="form-control" id="exampleFormControlInput1" value="@Model.Source"> 
+        </div>
+
+        <div class="form-group">
+            <label asp-for="URL" for="exampleFormControl1">URL</label>
+            <input asp-for="URL" class="form-control" id="exampleFormControlInput1" value="@Model.URL">
+        </div>
         <br><br>
         <div class="form-group row">
             <div class="col-3 offset-3">

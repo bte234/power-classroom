@@ -18,17 +18,6 @@ namespace power_classroom.Controllers
         }
         public IActionResult Index()
         {
-            // //get items from db
-            // var resources = await _newsResourceService.GetResourceAsync();
-
-            // // Put items into a model
-            // var model = new NewsResourceViewModel()
-            // {
-            //     NewsResourceList = resources
-            // };
-
-            // // Render view using the model
-            // return View(model);
             return View();
         }
 
@@ -78,16 +67,31 @@ namespace power_classroom.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return RedirectToAction("Index");
+                if (newItem.ArticleType == ArticleEnum.News) 
+                {
+                    return RedirectToAction("News");
+                } 
+                else 
+                {
+                    return RedirectToAction("Resources");
+                }
             }
 
             var successful = await _newsResourceService.AddItemAsync(newItem);
             if (!successful)
             {
-                return BadRequest("Could not add resource.");
+                return BadRequest("Could not add news or resource. Please try again!");
             }
 
-            return RedirectToAction("Index"); //TODO: Gotta go to News or Resources
+            
+            if (newItem.ArticleType == ArticleEnum.News) 
+            {
+                return RedirectToAction("News");
+            } 
+            else 
+            {
+                return RedirectToAction("Resources");
+            }
         }
 
         [ValidateAntiForgeryToken]
@@ -95,15 +99,27 @@ namespace power_classroom.Controllers
         {
             if (id == Guid.Empty)
             {
-                return RedirectToAction("Index");
+                if (currentItem.ArticleType == ArticleEnum.News) {
+                    return RedirectToAction("News");
+                } else {
+                    return RedirectToAction("Resources");
+                }
             }
 
             var success = await _newsResourceService.UpdateItemAsync(id, currentItem);
             if (!success)
             {
-                return BadRequest("Could not update item.");
+                return BadRequest("Could not update item. Please try again!");
             }
-            return RedirectToAction("Index"); //TODO: gotta go to News or Resource
+
+            if (currentItem.ArticleType == ArticleEnum.News) 
+            {
+                return RedirectToAction("News");
+            } 
+            else 
+            {
+                return RedirectToAction("Resources");
+            }
         }
     }
 }
