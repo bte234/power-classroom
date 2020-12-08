@@ -90,6 +90,13 @@ body {
 
 .admin-btns a {
   margin: .2em;
+}
+
+.admin-btns .edit {
+  color: green;
+}
+
+.admin-btns .delete {
   color: red;
 }
 
